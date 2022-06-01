@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>Home V.3 - Cafenod HTML5 Template {elapsed_time}</title>
+    <title>COFFEE SHOP MILANGKALA</title>
     <link rel="shortcut icon" href="<?php echo base_url()?>assets/images/logo/favourite_icon.png">
 
     <!-- fraimwork - css include -->
@@ -81,7 +81,7 @@
 					  	<a class="nav-link" href="<?php echo base_url()?>">Home</a>
                       </li>
 					  <li>
-					  	<a class="nav-link" href="<?php echo base_url('home/product')?>">Product</a>
+					  	<a class="nav-link" href="<?php echo base_url('home/product')?>">Daftar Menu</a>
                       </li>
 					  <li>
                         <a class="nav-link" href="<?php echo base_url('home/contact')?>">Contact us</a>
@@ -89,7 +89,7 @@
                     </ul>
                   </div>
 
-                  <ul class="header_btns_group ul_li_right">
+                  <ul class="header_btns_group ul_li_right" style="margin-right: 13px;">
                     <li>
                       <button type="button" class="cart_btn">
                         <i class="fal fa-shopping-bag"></i>

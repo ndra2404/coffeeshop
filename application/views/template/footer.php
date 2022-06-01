@@ -86,7 +86,7 @@
 
         <div class="footer_bottom text-center">
           <div class="container">
-            <p class="copyright_text mb-0">Copyright@ 2022 </p>
+            <p class="copyright_text mb-0">Copyright@ 2022 page generate in {elapsed_time} second</p>
           </div>
         </div>
       </footer>

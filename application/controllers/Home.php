@@ -10,17 +10,22 @@ class Home extends CI_Controller {
 	public function index()
 	{
 		$tables = array(
-			'product_type' => 'product_type.id = product.product_type_id',
+			'kategori' => 'kategori.id_kategori = menu.id_kategori',
 		);
-		$select = "product.*, product_type.product_type as product_type_name";
-		$data['products'] = $this->Gm->joinTable('product', $tables,$select);
+		$select = "menu.*, kategori.kategori";
+		$data['menu'] = $this->Gm->joinTable('menu', $tables,$select);
 		$this->load->view('template/header');
 		$this->load->view('home', $data);
 		$this->load->view('template/footer');
 	}
 	public function product()
 	{
-		$data ="";
+		$tables = array(
+			'kategori' => 'kategori.id_kategori = menu.id_kategori',
+		);
+		$select = "menu.*, kategori.kategori";
+		$data['menu'] = $this->Gm->joinTable('menu', $tables,$select);
+		$data['kategori'] = $this->Gm->getAll('kategori');
 		$this->load->view('template/header');
 		$this->load->view('product', $data);
 		$this->load->view('template/footer');

@@ -212,35 +212,35 @@
                 <div class="col-lg-6 col-md-8">
                   <h2 class="small_title wow fadeInUp" data-wow-delay=".1s"><i class="fas fa-coffee"></i> special online shop</h2>
                   <h3 class="big_title wow fadeInUp" data-wow-delay=".2s">
-                    Our popular product
+                    Our popular menu
                   </h3>
                 </div>
 
                 <div class="col-lg-6 col-md-4">
                   <div class="abtn_wrap text-lg-end text-md-end wow fadeInUp" data-wow-delay=".3s">
-                    <a class="btn btn_border border_black" href="shop.html">See all product</a>
+                    <a class="btn btn_border border_black" href="shop.html">Liat semua menu</a>
                   </div>
                 </div>
               </div>
             </div>
 			<div class="row justify-content-center">
 			<?php
-				foreach($products as $row)
+				foreach($menu as $row)
 				{
 			?>
             
               <div class="col-lg-4 col-md-6 col-sm-6">
                 <div class="shop_card wow fadeInUp" data-wow-delay=".1s">
                   <a class="wishlist_btn" href="#!"><i class="fal fa-heart"></i></a>
-                  <a class="item_image" href="<?php echo base_url('home/product/'.$row->id)?>">
-                    <img src="<?php echo base_url('assets/images/'.$row->product_thumb1)?>" alt="image_not_found">
+                  <a class="item_image" href="<?php echo base_url('home/product/'.$row->id_menu)?>">
+                    <img src="<?php echo base_url('assets/images/'.$row->foto)?>" alt="image_not_found">
                   </a>
                   <div class="item_content">
                     <h3 class="item_title text-uppercase">
-                      <a href="<?php echo base_url('home/product/'.$row->id)?>"><?php echo $row->product_name ?></a>
+                      <a href="<?php echo base_url('home/product/'.$row->id_menu)?>"><?php echo $row->nama_menu ?></a>
                     </h3>
                     <div class="btns_group">
-                      <span class="item_price bg_default_brown"><?php echo number_format($row->product_price) ?></span>
+                      <span class="item_price bg_default_brown"><?php echo number_format($row->harga) ?></span>
                       <a class="btn btn_border border_black text-uppercase" href="#!">Add To Cart</a>
                     </div>
                   </div>
