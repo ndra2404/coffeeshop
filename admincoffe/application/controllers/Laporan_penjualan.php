@@ -10,8 +10,9 @@ class Laporan_penjualan extends CI_Controller {
 		}
 		$this->load->view('laporan_penjualan');
 	}
-
+	
 }
+
 
 /* End of file Laporan_penjualan.php */
 /* Location: ./application/controllers/Laporan_penjualan.php */

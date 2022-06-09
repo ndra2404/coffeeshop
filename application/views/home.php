@@ -233,7 +233,7 @@
                 <div class="shop_card wow fadeInUp" data-wow-delay=".1s">
                   <a class="wishlist_btn" href="#!"><i class="fal fa-heart"></i></a>
                   <a class="item_image" href="<?php echo base_url('home/product/'.$row->id_menu)?>">
-                    <img src="<?php echo base_url('assets/images/'.$row->foto)?>" alt="image_not_found">
+                    <img src="<?php echo base_url('assets/images/menu/'.$row->foto)?>" style="max-height: 100%;" alt="image_not_found">
                   </a>
                   <div class="item_content">
                     <h3 class="item_title text-uppercase">

@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Produk</title>
+  <title>Menu</title>
   <link rel="stylesheet" href="<?php echo base_url('assets/vendor/adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') ?>">
   <link rel="stylesheet" href="<?php echo base_url('assets/vendor/adminlte/plugins/sweetalert2/sweetalert2.min.css') ?>">
   <link rel="stylesheet" href="<?php echo base_url('assets/vendor/adminlte/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') ?>">
@@ -27,7 +27,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col">
-            <h1 class="m-0 text-dark">Produk</h1>
+            <h1 class="m-0 text-dark">Menu</h1>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -46,12 +46,11 @@
               <thead>
                 <tr>
                   <th>No</th>
-                  <th>Barcode</th>
                   <th>Nama</th>
-                  <th>Satuan</th>
                   <th>Kategori</th>
                   <th>Harga</th>
-                  <th>Stok</th>
+                  <th>Status Menu</th>
+									<th>Image</th>
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -79,28 +78,33 @@
     <form id="form">
       <input type="hidden" name="id">
       <div class="form-group">
-        <label>Barcode</label>
-        <input type="text" class="form-control" placeholder="Barcode" name="barcode" required>
-      </div>
-      <div class="form-group">
         <label>Nama</label>
-        <input type="text" class="form-control" placeholder="Nama" name="nama_produk" required>
-      </div>
-      <div class="form-group">
-        <label>Satuan</label>
-        <select name="satuan" id="satuan" class="form-control select2" required></select>
+        <input type="text" class="form-control" placeholder="Nama" name="nama" required>
       </div>
       <div class="form-group">
         <label>Kategori</label>
-        <select name="kategori" id="kategori" class="form-control select2" required></select>
+        <select name="kategori" id="kategori" class="form-control select2" required>
+					<?php
+						foreach ($kategori as $k) {
+							echo "<option value='$k->id_kategori'>$k->kategori</option>";
+						}
+					?>
+				</select>
       </div>
       <div class="form-group">
         <label>Harga</label>
         <input type="text" class="form-control" placeholder="Harga" name="harga" required>
       </div>
-      <div class="form-group">
-        <label>Stok</label>
-        <input type="text" class="form-control" placeholder="Stok" name="stok" value="0" readonly>
+			<div class="form-group">
+        <label>Status</label>
+        <select name="status" id="status" class="form-control select2" required>
+					<option value="Tersedia">Tersedia</option>
+					<option value="Habis">Habis</option>
+				</select>
+      </div>
+			<div class="form-group">
+        <label>Image</label>
+        <input type="file" class="form-control" name="file" required>
       </div>
       <button class="btn btn-success" type="submit">Add</button>
       <button class="btn btn-danger" data-dismiss="modal">Close</button>
@@ -123,8 +127,7 @@
   var deleteUrl = '<?php echo site_url('produk/delete') ?>';
   var editUrl = '<?php echo site_url('produk/edit') ?>';
   var getProdukUrl = '<?php echo site_url('produk/get_produk') ?>';
-  var kategoriSearchUrl = '<?php echo site_url('kategori_produk/search') ?>';
-  var satuanSearchUrl = '<?php echo site_url('satuan_produk/search') ?>';
+  var kategoriSearchUrl = '<?php echo site_url('kategoriproduk/search') ?>';
 </script>
 <script src="<?php echo base_url('assets/js/produk.min.js') ?>"></script>
 </body>

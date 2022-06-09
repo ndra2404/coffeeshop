@@ -12,21 +12,21 @@
 			<?php echo $this->session->userdata('toko')->alamat; ?><br><br>
 			<table width="100%">
 				<tr>
-					<td><?php echo $nota ?></td>
+					<td>No order : <?php echo $nota ?></td>
 					<td align="right"><?php echo $tanggal ?></td>
+				</tr>
+			</table>
+			<table width="100%">
+				<tr>
+					<td>No bayar : <?php echo $no_bayar ?></td>
+					<td align="right"></td>
 				</tr>
 			</table>
 			<hr>
 			<table width="100%">
-				<tr>
-					<td width="50%"></td>
-					<td width="3%"></td>
-					<td width="10%" align="right"></td>
-					<td align="right" width="17%"><?php echo $kasir ?></td>
-				</tr>
 				<?php foreach ($produk as $key): ?>
 					<tr>
-						<td><?php echo $key->nama_produk ?></td>
+						<td><?php echo $key->nama_menu ?></td>
 						<td></td>
 						<td align="right"><?php echo $key->total ?></td>
 						<td align="right"><?php echo $key->harga ?></td>

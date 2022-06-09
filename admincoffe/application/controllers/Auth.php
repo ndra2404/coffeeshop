@@ -19,11 +19,11 @@ class Auth extends CI_Controller {
 					$toko = $this->auth_model->getToko();
 					if (password_verify($this->input->post('password'), $data->password)) {
 						$userdata = array(
-							'id' => $data->id,
+							'id' => $data->id_user ,
 							'username' => $data->username,
 							'password' => $data->password,
 							'nama' => $data->nama,
-							'role' => $data->role == '1' ? 'admin' : 'kasir',
+							'role' => $data->level,
 							'status' => 'login',
 							'toko' => $toko
 						);

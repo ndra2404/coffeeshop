@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Kategori_produk extends CI_Controller {
+class KategoriProduk extends CI_Controller {
 
 	public function __construct()
 	{
@@ -24,7 +24,8 @@ class Kategori_produk extends CI_Controller {
 			foreach ($this->kategori_produk_model->read()->result() as $kategori_produk) {
 				$data[] = array(
 					'kategori' => $kategori_produk->kategori,
-					'action' => '<button class="btn btn-sm btn-success" onclick="edit('.$kategori_produk->id.')">Edit</button> <button class="btn btn-sm btn-danger" onclick="remove('.$kategori_produk->id.')">Delete</button>'
+					'kd_kategori' => $kategori_produk->id_kategori,
+					'action' => '<button class="btn btn-sm btn-success" onclick="edit(\''.$kategori_produk->id_kategori.'\')">Edit</button> <button class="btn btn-sm btn-danger" onclick="remove(\''.$kategori_produk->id_kategori.'\')">Delete</button>'
 				);
 			}
 		} else {
@@ -39,7 +40,8 @@ class Kategori_produk extends CI_Controller {
 	public function add()
 	{
 		$data = array(
-			'kategori' => $this->input->post('kategori')
+			'kategori' => $this->input->post('kategori'),
+			'id_kategori' => $this->input->post('kd_kategori')
 		);
 		if ($this->kategori_produk_model->create($data)) {
 			echo json_encode('sukses');
@@ -51,6 +53,8 @@ class Kategori_produk extends CI_Controller {
 		$id = $this->input->post('id');
 		if ($this->kategori_produk_model->delete($id)) {
 			echo json_encode('sukses');
+		}else{
+			echo json_encode('gagal');
 		}
 	}
 
@@ -81,7 +85,7 @@ class Kategori_produk extends CI_Controller {
 		$search = $this->kategori_produk_model->search($kategori);
 		foreach ($search as $kategori) {
 			$data[] = array(
-				'id' => $kategori->id,
+				'id' => $kategori->id_kategori,
 				'text' => $kategori->kategori
 			);
 		}

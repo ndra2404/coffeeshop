@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Pengguna_model extends CI_Model {
 
-	private $table = 'pengguna';
+	private $table = 'user';
 
 	public function create($data)
 	{
@@ -12,26 +12,26 @@ class Pengguna_model extends CI_Model {
 
 	public function read()
 	{
-		$this->db->where('role', '2');
+		$this->db->where('level', 'kasir');
 		return $this->db->get($this->table);
 	}
 
 	public function update($id, $data)
 	{
-		$this->db->where('id', $id);
+		$this->db->where('id_user', $id);
 		return $this->db->update($this->table, $data);
 	}
 
 	public function delete($id)
 	{
-		$this->db->where('id', $id);
+		$this->db->where('id_user', $id);
 		return $this->db->delete($this->table);
 	}
 
 	public function getPengguna($id)
 	{
-		$this->db->select('id, username, nama');
-		$this->db->where('id', $id);
+		$this->db->select('id_user, username, nama');
+		$this->db->where('id_user', $id);
 		return $this->db->get($this->table);
 	}
 

@@ -10,11 +10,14 @@ class Produk extends CI_Controller {
 			redirect('/');
 		}
 		$this->load->model('produk_model');
+		$this->load->model('kategori_produk_model');
 	}
 
 	public function index()
 	{
-		$this->load->view('produk');
+		$search = $this->kategori_produk_model->search("");
+		$data['kategori'] = $search;
+		$this->load->view('produk',$data);
 	}
 
 	public function read()
@@ -23,13 +26,12 @@ class Produk extends CI_Controller {
 		if ($this->produk_model->read()->num_rows() > 0) {
 			foreach ($this->produk_model->read()->result() as $produk) {
 				$data[] = array(
-					'barcode' => $produk->barcode,
-					'nama' => $produk->nama_produk,
+					'nama' => $produk->nama_menu,
 					'kategori' => $produk->kategori,
-					'satuan' => $produk->satuan,
 					'harga' => $produk->harga,
-					'stok' => $produk->stok,
-					'action' => '<button class="btn btn-sm btn-success" onclick="edit('.$produk->id.')">Edit</button> <button class="btn btn-sm btn-danger" onclick="remove('.$produk->id.')">Delete</button>'
+					'status' => $produk->status_menu,
+					'image' => '<img src="../assets/images/menu/'.$produk->foto.'" width="80px" height="80px">',
+					'action' => '<button class="btn btn-sm btn-success" onclick="edit(\''.$produk->id_menu.'\')">Edit</button> <button class="btn btn-sm btn-danger" onclick="remove(\''.$produk->id_menu.'\')">Delete</button>'
 				);
 			}
 		} else {
@@ -43,17 +45,29 @@ class Produk extends CI_Controller {
 
 	public function add()
 	{
-		$data = array(
-			'barcode' => $this->input->post('barcode'),
-			'nama_produk' => $this->input->post('nama_produk'),
-			'satuan' => $this->input->post('satuan'),
-			'kategori' => $this->input->post('kategori'),
-			'harga' => $this->input->post('harga'),
-			'stok' => $this->input->post('stok')
-		);
-		if ($this->produk_model->create($data)) {
-			echo json_encode($data);
+		$config['upload_path']="../assets/images/menu";
+		$config["allowed_types"] ="*";
+        $config['encrypt_name'] = TRUE;
+		$image="";
+        $this->load->library('upload',$config);
+        if($this->upload->do_upload("file")){
+			$image=$this->upload->data('file_name');
+			$lastcode = $this->produk_model->lastNumber();
+			$data = array(
+				'id_menu' => $lastcode,
+				'nama_menu' => $this->input->post('nama'),
+				'id_kategori' => $this->input->post('kategori'),
+				'harga' => $this->input->post('harga'),
+				'foto' => $image,
+				'status_menu' => $this->input->post('status')
+			);
+			if ($this->produk_model->create($data)) {
+				echo json_encode($data);
+			}
+		}else{
+			$msg = $this->upload->display_errors();
 		}
+		
 	}
 
 	public function delete()
@@ -67,14 +81,30 @@ class Produk extends CI_Controller {
 	public function edit()
 	{
 		$id = $this->input->post('id');
-		$data = array(
-			'barcode' => $this->input->post('barcode'),
-			'nama_produk' => $this->input->post('nama_produk'),
-			'satuan' => $this->input->post('satuan'),
-			'kategori' => $this->input->post('kategori'),
-			'harga' => $this->input->post('harga'),
-			'stok' => $this->input->post('stok')
-		);
+		$config['upload_path']="../assets/images/menu";
+		$config["allowed_types"] ="*";
+        $config['encrypt_name'] = TRUE;
+		$image="";
+        $this->load->library('upload',$config);
+        if($this->upload->do_upload("file")){
+			$image=$this->upload->data('file_name');
+		}
+		if($image==""){
+			$data = array(
+				'nama_menu' => $this->input->post('nama'),
+				'id_kategori' => $this->input->post('kategori'),
+				'harga' => $this->input->post('harga'),
+				'status_menu' => $this->input->post('status')
+			);
+		}else{
+			$data = array(
+				'nama_menu' => $this->input->post('nama'),
+				'id_kategori' => $this->input->post('kategori'),
+				'harga' => $this->input->post('harga'),
+				'foto' => $image,
+				'status_menu' => $this->input->post('status')
+			);
+		}
 		if ($this->produk_model->update($id,$data)) {
 			echo json_encode('sukses');
 		}
@@ -90,15 +120,15 @@ class Produk extends CI_Controller {
 		}
 	}
 
-	public function get_barcode()
+	public function get_menu()
 	{
 		header('Content-type: application/json');
-		$barcode = $this->input->post('barcode');
-		$search = $this->produk_model->getBarcode($barcode);
-		foreach ($search as $barcode) {
+		$menu = $this->input->post('menu');
+		$search = $this->produk_model->getMenu($menu);
+		foreach ($search as $row) {
 			$data[] = array(
-				'id' => $barcode->id,
-				'text' => $barcode->barcode
+				'id' => $row->id_menu,
+				'text' => $row->nama_menu
 			);
 		}
 		echo json_encode($data);

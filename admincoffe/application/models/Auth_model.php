@@ -7,13 +7,13 @@ class Auth_model extends CI_Model {
 	{
 		$this->db->where('username', $username);
 		$this->db->where('password', $password);
-		return $this->db->get('pengguna')->row();
+		return $this->db->get('user')->row();
 	}
 
 	public function getUser($username)
 	{
 		$this->db->where('username', $username);
-		return $this->db->get('pengguna');
+		return $this->db->get('user');
 	}
 
 	public function getToko()

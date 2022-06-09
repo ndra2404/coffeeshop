@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Kategori Produk</title>
+  <title>Kategori</title>
   <link rel="stylesheet" href="<?php echo base_url('assets/vendor/adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') ?>">
   <link rel="stylesheet" href="<?php echo base_url('assets/vendor/adminlte/plugins/sweetalert2/sweetalert2.min.css') ?>">
   <link rel="stylesheet" href="<?php echo base_url('assets/vendor/adminlte/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') ?>">
@@ -25,7 +25,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col">
-            <h1 class="m-0 text-dark">Kategori Produk</h1>
+            <h1 class="m-0 text-dark">Kategori</h1>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -44,6 +44,7 @@
               <thead>
                 <tr>
                   <th>No</th>
+									<th>Kode Kategori</th>
                   <th>Kategori</th>
                   <th>Actions</th>
                 </tr>
@@ -71,6 +72,10 @@
   <div class="modal-body">
     <form id="form">
       <input type="hidden" name="id">
+			<div class="form-group">
+        <label>Kode Kategori</label>
+        <input type="text" class="form-control" placeholder="kd_Kategori" maxlength="6" name="kd_kategori" required>
+      </div>
       <div class="form-group">
         <label>Kategori</label>
         <input type="text" class="form-control" placeholder="Kategori" name="kategori" required>
@@ -90,11 +95,11 @@
 <script src="<?php echo base_url('assets/vendor/adminlte/plugins/jquery-validation/jquery.validate.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/vendor/adminlte/plugins/sweetalert2/sweetalert2.min.js') ?>"></script>
 <script>
-  var readUrl = '<?php echo site_url('kategori_produk/read') ?>';
-  var addUrl = '<?php echo site_url('kategori_produk/add') ?>';
-  var deleteUrl = '<?php echo site_url('kategori_produk/delete') ?>';
-  var editUrl = '<?php echo site_url('kategori_produk/edit') ?>';
-  var get_kategoriUrl = '<?php echo site_url('kategori_produk/get_kategori') ?>';
+  var readUrl = '<?php echo site_url('kategoriproduk/read') ?>';
+  var addUrl = '<?php echo site_url('kategoriproduk/add') ?>';
+  var deleteUrl = '<?php echo site_url('kategoriproduk/delete') ?>';
+  var editUrl = '<?php echo site_url('kategoriproduk/edit') ?>';
+  var get_kategoriUrl = '<?php echo site_url('kategoriproduk/get_kategori') ?>';
 </script>
 <script src="<?php echo base_url('assets/js/kategori_produk.min.js') ?>"></script>
 </body>

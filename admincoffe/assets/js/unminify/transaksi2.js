@@ -157,7 +157,7 @@ function add() {
         qty.push(value[3])
     });
     $.ajax({
-        url: addUrl,
+        url: addUrl+"/"+$("#no_order").val(),
         type: "post",
         dataType: "json",
         data: {
@@ -194,58 +194,17 @@ function kembalian() {
     $(".kembalian").html(jumlah_uang - total - diskon);
     checkUang()
 }
-$("#barcode").select2({
-    placeholder: "menu",
-    ajax: {
-        url: getMenuUrl,
-        type: "post",
-        dataType: "json",
-        data: params => ({
-            menu: params.term
-        }),
-        processResults: res => ({
-            results: res
-        }),
-        cache: true
-    }
-});
-$("#pelanggan").select2({
-    placeholder: "Pelanggan",
-    ajax: {
-        url: pelangganSearchUrl,
-        type: "post",
-        dataType: "json",
-        data: params => ({
-            pelanggan: params.term
-        }),
-        processResults: res => ({
-            results: res
-        }),
-        cache: true
-    }
-});
-$("#tanggal").datetimepicker({
-    format: "dd-mm-yyyy h:ii:ss"
-});
+
 $(".modal").on("hidden.bs.modal", () => {
     $("#form")[0].reset();
     $("#form").validate().resetForm()
 });
 $(".modal").on("show.bs.modal", () => {
-    let now = moment().format("D-MM-Y H:mm:ss"),
-        total = $("#total").html(),
+    let total = $("#total").html(),
         jumlah_uang = $('[name="jumlah_uang"').val();
-    $("#tanggal").val(now), $(".total_bayar").html(total), $(".kembalian").html(Math.max(jumlah_uang - total, 0))
+    $(".total_bayar").html(total), $(".kembalian").html(Math.max(jumlah_uang - total, 0))
 });
-$("#form").validate({
-    errorElement: "span",
-    errorPlacement: (err, el) => {
-        err.addClass("invalid-feedback"), el.closest(".form-group").append(err)
-    },
-    submitHandler: () => {
-        add()
-    }
-});
+
 
 $("#formbayar").validate({
     errorElement: "span",

@@ -18,12 +18,12 @@
 							<div class="element-item <?php echo $row->id_kategori?> " data-category="<?php echo $row->id_kategori?>" style="position: absolute; left: 0px; top: 0px;">
                 <div class="recipe_item">
                   <div class="content_col">
-                    <a class="item_image" href="shop_details.html">
-                      <img src="<?php echo base_url()?>assets/images/<?php echo $row->foto?>" alt="image_not_found">
+                    <a class="item_image" href="">
+                      <img src="<?php echo base_url()?>assets/images/menu/<?php echo $row->foto?>" style="max-width: 100%;max-height: 120px;" alt="image_not_found">
                     </a>
                     <div class="item_content">
                       <h3 class="item_title text-uppercase">
-                        <a href="shop_details.html"><?php echo $row->nama_menu?></a>
+                        <a href=""><?php echo $row->nama_menu?></a>
                       </h3>
                       <p class="mb-0">
                         The coffee is brewed by first roasting the green coffee beans over hot coals in a brazier. Once the beans are roasted each participant is given an 
