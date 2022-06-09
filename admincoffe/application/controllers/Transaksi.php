@@ -177,7 +177,7 @@ class Transaksi extends CI_Controller {
 	public function transaksi_terakhir($value='')
 	{
 		header('Content-type: application/json');
-		$now = date('d m Y');
+		$now = date('Ym');
 		foreach ($this->transaksi_model->transaksiTerakhir($now) as $key) {
 			$total = explode(',', $key);
 		}

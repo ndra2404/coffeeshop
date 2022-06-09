@@ -10,6 +10,12 @@ class Laporan_penjualan extends CI_Controller {
 		}
 		$this->load->view('laporan_penjualan');
 	}
+	public function print(){
+		if ($this->session->userdata('status') !== 'login' ) {
+			redirect('/');
+		}
+		$this->load->view('printlaporan');
+	}
 	
 }
 

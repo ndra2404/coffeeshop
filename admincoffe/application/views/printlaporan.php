@@ -16,18 +16,15 @@
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
-  <?php $this->load->view('includes/nav'); ?>
-
-  <?php $this->load->view('includes/aside'); ?>
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+  <div class="">
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col">
-            <h1 class="m-0 text-dark">Laporan Penjualan <a href="<?php echo site_url('laporan_penjualan/print')?>" target="_blank" class='btn btn-info'>Cetak</a></h1>
+            <h1 class="m-0 text-dark">Laporan Penjualan</h1>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -39,17 +36,15 @@
       <div class="container-fluid">
         <div class="card">
           <div class="card-body">
-            <table class="table w-100 table-bordered table-hover" id="laporan_penjualan">
+            <table class="table w-100 table-bordered table-hover" id="laporan_penjualan2">
               <thead>
                 <tr>
-                  <th>No</th>
                   <th>Tanggal</th>
                   <th>Nama Produk</th> 
                   <th>Total Bayar</th> 
                   <th>Jumlah Uang</th> 
                   <th>Diskon</th> 
-                  <th>Pelanggan</th> 
-                  <th>Action</th> 
+                  <th>Pelanggan</th>
                 </tr>
               </thead>
             </table>
@@ -63,7 +58,6 @@
 
 </div>
 <!-- ./wrapper -->
-<?php $this->load->view('includes/footer'); ?>
 <?php $this->load->view('partials/footer'); ?>
 <script src="<?php echo base_url('assets/vendor/adminlte/plugins/datatables/jquery.dataTables.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/vendor/adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') ?>"></script>

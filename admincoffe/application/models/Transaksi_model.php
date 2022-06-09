@@ -63,12 +63,12 @@ class Transaksi_model extends CI_Model {
 
 	public function transaksiHari($hari)
 	{
-		return $this->db->query("SELECT COUNT(*) AS total FROM transaksi WHERE DATE_FORMAT(tanggal, '%d %m %Y') = '$hari'")->row();
+		return $this->db->query("SELECT COUNT(*) AS total FROM pesanan WHERE DATE_FORMAT(tgl_order, '%d %m %Y') = '$hari'")->row();
 	}
 
 	public function transaksiTerakhir($hari)
 	{
-		return $this->db->query("SELECT transaksi.qty FROM transaksi WHERE DATE_FORMAT(tanggal, '%d %m %Y') = '$hari' LIMIT 1")->row();
+		return $this->db->query("SELECT sum(grand_total)qty FROM pembayaran WHERE DATE_FORMAT(tgl_bayar, '%Y%m') = '$hari' LIMIT 1")->row();
 	}
 
 	public function getAll($id)

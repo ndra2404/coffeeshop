@@ -23,7 +23,7 @@ $.ajax( {
     type:"get",
     dataType:"json",
     success:res=> {
-        $("#transaksi_terakhir").html(res)
+        $("#transaksi_terakhir").html(res.toLocaleString('hi-ID'))
     }
 });
 $.ajax( {

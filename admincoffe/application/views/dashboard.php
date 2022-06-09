@@ -68,7 +68,7 @@
               </div>
               <div class="card-body">
                 <div class="chart">
-                  <canvas id="produkTerlaris" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%"></canvas>
+                  <canvas id="produkTerlaris" style="min-height: 300px; height: 300px; max-height: 500px; max-width: 100%"></canvas>
                 </div>
               </div>
             </div>

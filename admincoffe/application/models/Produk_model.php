@@ -62,8 +62,9 @@ class Produk_model extends CI_Model {
 
 	public function produkTerlaris()
 	{
-		return $this->db->query('SELECT produk.nama_produk, produk.terjual FROM `produk` 
-		ORDER BY CONVERT(terjual,decimal)  DESC LIMIT 5')->result();
+		return $this->db->query('SELECT nama_menu nama_produk, sum(jumlah) terjual FROM detail_pesanan a left join menu b on a.id_menu = b.id_menu
+		group by nama_menu
+		ORDER BY CONVERT(sum(jumlah),decimal)  DESC LIMIT 5')->result();
 	}
 
 	public function lastNumber()
